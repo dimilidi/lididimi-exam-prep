@@ -62,4 +62,8 @@ jobs:
     steps:
       - name: Trigger deployment on Render
         run: |
-        curl -X POST "https://api.render.com/deploy/srv-XXXXXXXXX?key=https://api.render.com/deploy/srv-cuo8n2ggph6c73djnl00?key=4ylUq_Fle6U"
+          curl -X POST "https://api.render.com/deploy/srv-cuo8n2ggph6c73djnl00?key=4ylUq_Fle6U"
+      
+      - name: Wait for deployment to complete
+        run: npx wait-on https://lididimi-exam-prep.onrender.com
+
