@@ -1,4 +1,4 @@
-name: Build and test
+name: CI/CD pipeline
 
 on:
   push:
@@ -54,3 +54,12 @@ jobs:
 
       - name: Run UI tests
         run: npm run test:ui
+
+deploy:
+  needs: ui-tests
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: Trigger deployment on Render
+      run: |
+       curl -X POST "https://api.render.com/deploy/srv-XXXXXXXXX?key=https://api.render.com/deploy/srv-cuo8n2ggph6c73djnl00?key=4ylUq_Fle6U"
